@@ -11,7 +11,8 @@ function processFile(event) {
   var list = JSON.parse(event.target.result);
   var collect = db.collection("all-items");
   for (let item of list) {
-    var parts = item.name.split("+");
+    console.log(buildKey(item.name));
+    /*var parts = item.name.split("+");
     if (parts.length == 1) {
       collect.doc(itemKey(item.name)).set({
         name: item.name,
@@ -40,10 +41,6 @@ function processFile(event) {
       }).catch(function() {
         console.log("Failed to write item: " + item.name);
       });
-    } 
+    }*/
   }
-}
-
-function itemKey(itemName) {
-  return itemName.trim().toLowerCase().replace(/ |\//g, "-");
 }
