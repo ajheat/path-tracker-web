@@ -11,19 +11,27 @@ function buildKey(rawName) {
     var split = name.split(',');
     key = split[0];
     subtype = split[1];
-    alternatives.push(subtype.trim() + ' ' + key);
-    alternatives.push(name.replace(/\,/, ''));
+    alternatives.push(keyString(subtype + ' ' + key));
+    alternatives.push(keyString(name.replace(/\,/, '')));
   } else if (/\(.*\)$/.test(key)) {
     var split = name.split('(');
     key = split[0];
     subtype = split[1].replace(/\)/, '');
-    alternatives.push(subtype + ' ' + key.trim());
-    alternatives.push(name.replace(/\(|\)/, ''));
+    alternatives.push(keyString(subtype + ' ' + key));
+    alternatives.push(keyString(name.replace(/\(|\)/g, '')));
   } else if (/with/.test(key)) {
     var split = name.split('with');
     key = split[0];
     subtype = split[1];
-    alternatives.push(subtype.trim() + ' ' + key.trim());
-    alternatives.push(key.trim() + ' ' + subtype.trim());
+    alternatives.push(keyString(subtype + ' ' + key));
+    alternatives.push(keyString(key.trim() + ' ' + subtype.trim()));
   }
+  key = keyString(key);
+  if (subtype !== '') {
+    subtype = keyString(subtype);
+  }
+}
+
+function keyString(key) {
+  return key.trim().replace(/ /g, '-').replace(/(’|')|\./g, '');
 }
