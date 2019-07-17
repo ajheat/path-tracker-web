@@ -11,7 +11,7 @@ function processFile(event) {
   var list = JSON.parse(event.target.result);
   var collect = db.collection("all-items");
   for (let item of list) {
-    console.log(buildKey(item.name));
+    var keyObj = buildKey(item.name);
     /*var parts = item.name.split("+");
     if (parts.length == 1) {
       collect.doc(itemKey(item.name)).set({
