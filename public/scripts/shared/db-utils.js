@@ -1,30 +1,29 @@
 function buildKey(rawName) {
   var name = rawName.toLowerCase();
   var key = name;
-  var subType = '';
+  var subtype = '';
   var alternatives = [];
   if (/\+\d+$/.test(key)) {
     var split = name.split('+');
     key = split[0];
-    subType = '+' + split[1];
+    subtype = '+' + split[1];
   } else if (/\,/.test(key)) {
     var split = name.split(',');
     key = split[0];
-    subType = split[1];
-    alternatives.push(subType.trim() + ' ' + key);
+    subtype = split[1];
+    alternatives.push(subtype.trim() + ' ' + key);
     alternatives.push(name.replace(/\,/, ''));
   } else if (/\(.*\)$/.test(key)) {
     var split = name.split('(');
     key = split[0];
-    subType = split[1].replace(/\)/, '');
-    alternatives.push(subType + ' ' + key.trim());
+    subtype = split[1].replace(/\)/, '');
+    alternatives.push(subtype + ' ' + key.trim());
     alternatives.push(name.replace(/\(|\)/, ''));
   } else if (/with/.test(key)) {
     var split = name.split('with');
     key = split[0];
-    subType = split[1];
-    alternatives.push(subType.trim() + ' ' + key.trim());
-    alternatives.push(key.trim() + ' ' + subType.trim());
-    console.log(alternatives);
+    subtype = split[1];
+    alternatives.push(subtype.trim() + ' ' + key.trim());
+    alternatives.push(key.trim() + ' ' + subtype.trim());
   }
 }
