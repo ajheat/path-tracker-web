@@ -2,9 +2,32 @@
 <html>
   <head>
     <title>Value Calculators</title>
+
+    <link rel="stylesheet" href="/styles/admin.css" type="text/css"></link>
   </head>
   <body>
-    <h2>Item & Spell Value Calculators</h2>
-    <p>Not yet implemented. <a href="/">Click here</a> to return to the landing page.</p>
+    <h2>Value Calculators</h2>
+    <div id="fileUpload">
+      <h3 id="uploadHeader">Simple Search by Name</h3>
+      <div id = "fileChooser">
+        <input type="text" id="itemNameInput">
+      </div>
+      <br />
+      <div id="fileSubmit">
+        <button type="button" onclick="nameSearch()">Search</button>
+      </div>
+    </div>
+    <script src="/__/firebase/6.2.4/firebase-app.js"></script>
+    <script src="/__/firebase/6.2.4/firebase-auth.js"></script>
+    <script src="/__/firebase/6.2.4/firebase-firestore.js"></script>
+    <script src="/__/firebase/init.js"></script>
+
+    <script src="/scripts/libraries/jquery-3.4.1.min.js"></script>
+
+    <script src="/scripts/shared/database/db-utils.js"></script>
+    <script src="/scripts/shared/database/db-search.js"></script>
+
+    <script src="/scripts/item_values/main.js"></script>
   </body>
 </html>
+
