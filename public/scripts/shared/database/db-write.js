@@ -3,6 +3,7 @@ function writeItemToDatabase(item, keyObject) {
   var itemVal = item.value.replace(/,|( gp)/g,"");
   if (keyObject.subtype === '') {
     dbObj.value = itemVal;
+    dbObj.displayValue = item.value;
     dbObj.name = item.name;
   } else {
     dbObj.name = keyObject.trimmedName;
@@ -13,7 +14,7 @@ function writeItemToDatabase(item, keyObject) {
     return false;  
   });
   if (keyObject.subtype !== '') {
-    var subObj = {name: item.name, value: itemVal};
+    var subObj = {name: item.name, value: itemVal, displayValue: item.value};
     db.collection("all-items/" + keyObject.key + "/subtypes").doc(keyObject.subtype).set(subObj).then(function() {
       return true;
     }).catch(function() {

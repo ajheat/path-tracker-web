@@ -13,6 +13,6 @@ function processFile(event) {
   var collect = db.collection("all-items");
   for (let item of list) {
     var keyObj = buildKey(item.name);
-    writeItemToDatabase(item, keyObj));
+    writeItemToDatabase(item, keyObj);
   }
 }
