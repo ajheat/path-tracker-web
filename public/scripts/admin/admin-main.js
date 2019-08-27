@@ -1,5 +1,3 @@
-const db = firebase.firestore();
-
 function handleUpload() {
   var file = $('#fileInput')[0].files[0]
   var reader = new FileReader();
